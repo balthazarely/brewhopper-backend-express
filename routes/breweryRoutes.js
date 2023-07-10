@@ -12,14 +12,13 @@ import { admin, protect } from "../middleware/authMiddleware.js";
 const router = Router();
 
 router.route("/").get(getBreweries).post(protect, admin, addNewBrewery);
+
+// all should have ptohrect expect the get routes
 router
   .route("/:id")
   .get(getBreweryById)
-  .put(protect, admin, updateBrewery)
-  .delete(protect, admin, deleteBrewery);
-router
-  .route("/:id/beers")
-  .get(getAllBeersAtBrewery)
-  .post(protect, addNewBrewery);
+  .put(admin, updateBrewery)
+  .delete(admin, deleteBrewery);
+router.route("/:id/beers").get(getAllBeersAtBrewery).post(addNewBrewery);
 
 export default router;

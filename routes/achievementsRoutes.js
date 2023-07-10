@@ -12,24 +12,17 @@ import {
 } from "../controllers/achievementController.js";
 
 const router = Router();
-router
-  .route("/")
-  .get(protect, admin, getAllAchievements)
-  .post(protect, admin, addAchievement);
+
+// All should have protect
+router.route("/").get(admin, getAllAchievements).post(admin, addAchievement);
 
 router
   .route("/:id")
-  .put(protect, admin, editAchievement)
-  .delete(protect, admin, deleteAchievement);
+  .put(admin, editAchievement)
+  .delete(admin, deleteAchievement);
 
-router
-  .route("/coupon")
-  .get(protect, getAllUserCoupons)
-  .post(protect, createCoupon);
+router.route("/coupon").get(getAllUserCoupons).post(createCoupon);
 
-router
-  .route("/coupon/:id")
-  .get(protect, getCouponById)
-  .put(protect, redeemCoupon);
+router.route("/coupon/:id").get(getCouponById).put(redeemCoupon);
 
 export default router;

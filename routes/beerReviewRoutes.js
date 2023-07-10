@@ -10,14 +10,12 @@ import {
 
 const router = Router();
 
-router
-  .route("/")
-  .get(protect, getAllReviewsByUser)
-  .post(protect, addBeerReview);
+// all should have ptohrect
+router.route("/").get(getAllReviewsByUser).post(addBeerReview);
 router
   .route("/:id")
-  .get(protect, getReviewsForBeerByUser)
-  .put(protect, updateBeerReview)
-  .delete(protect, deleteReview);
+  .get(getReviewsForBeerByUser)
+  .put(updateBeerReview)
+  .delete(deleteReview);
 
 export default router;

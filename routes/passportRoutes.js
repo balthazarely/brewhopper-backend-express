@@ -9,10 +9,12 @@ import {
 const router = Router();
 
 router.route("/").get(protect, getUserProfile);
+
+// all should have ptohrect
 router
   .route("/add-beer")
-  .post(protect, addBeerToPassport)
-  .delete(protect, removeBeerFromPassport);
+  .post(addBeerToPassport)
+  .delete(removeBeerFromPassport);
 
 // router.post("/auth", authUser);
 // router.post("/logout", logoutUser);
